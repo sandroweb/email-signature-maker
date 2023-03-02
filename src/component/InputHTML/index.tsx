@@ -8,9 +8,9 @@ export interface InputHTMLProps {
 
 const InputHTML: FC<InputHTMLProps> = ({ label, value, onChange }) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div className="flex flex-col">
             <label>{label}</label>
-            <textarea value={value || ''} onChange={(e) => onChange(e.target.value)} style={{minHeight: '300px'}} />
+            <textarea value={value || ''} onChange={(e) => onChange(e.target.value)} className="h-80" />
         </div>
     );
 }

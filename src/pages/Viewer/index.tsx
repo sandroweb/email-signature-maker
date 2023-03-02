@@ -6,7 +6,7 @@ const Viewer = () => {
     const {data, generateLink} = useContext(AppContext);
     const [terms, setTerms] = useState<ITerm[]>(data.fields.map(field => ({
         ...field,
-        replaceTerm: field.findableTerm,
+        replaceTerm: '',
     })));
 
     const replacedHTML = useMemo<string>(() => {
@@ -16,26 +16,34 @@ const Viewer = () => {
     }, [data.html, terms])
 
     return (
-        <section style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
+        <article className="flex flex-col gap-3">
+            <header>
+                <h1>Customizing your email signature</h1>
+            </header>
             <section>
-                <a href={generateLink(false)}>Back to edit mode</a>
+                <a className="button self-start" href={generateLink(false)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    Back to edit mode
+                </a>
             </section>
-            <section style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
+            <section className="flex flex-col gap-3">
                 <h4>
                     Fields
                 </h4>
                 {
                     terms.map((term, index) => (
-                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                        <div className="flex flex-col gap-1">
                             <label>{term.label}</label>
                             {
                                 term.multiple ? (
-                                    <textarea value={term.replaceTerm.split('<br />').join('\n')} onChange={(e) => setTerms(terms.map((t, i) => i === index ? {
+                                    <textarea placeholder={term.findableTerm} value={term.replaceTerm.split('<br />').join('\n')} onChange={(e) => setTerms(terms.map((t, i) => i === index ? {
                                         ...t,
                                         replaceTerm: e.target.value.split('\n').join('<br />'),
                                     } : t))} />
                                 ) : (
-                                    <input key={index} value={term.replaceTerm} onChange={(e) => setTerms(terms.map((t, i) => i === index ? {
+                                    <input placeholder={term.findableTerm} key={index} value={term.replaceTerm} onChange={(e) => setTerms(terms.map((t, i) => i === index ? {
                                         ...t,
                                         replaceTerm: e.target.value,
                                     } : t))} />
@@ -50,17 +58,17 @@ const Viewer = () => {
                 <h4>
                     HTML Preview
                 </h4>
-                <iframe style={{border: '1px solid #000'}} srcDoc={replacedHTML} title="t" />
+                <iframe srcDoc={replacedHTML} title="t" />
             </section>
             <section>
                 <h4>
                     HTML of the signature
                 </h4>
-                <pre style={{maxWidth: '100%', backgroundColor: '#CCC', padding: '20px;', overflow: 'auto'}}>
+                <pre>
                     {replacedHTML}
                 </pre>
             </section>
-        </section>
+        </article>
     )
 }
 
