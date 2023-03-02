@@ -3,37 +3,39 @@
 @tailwind utilities;
 
 h1 {
-    @apply text-3xl font-bold text-center;
+  @apply text-3xl font-bold text-center;
 }
 
-button, a.button {
-    @apply flex gap-1 bg-blue-500 text-white font-bold py-2 px-2 rounded-lg text-center border-blue-500 border;
+button,
+a.button {
+  @apply flex gap-1 bg-blue-500 text-white font-bold py-2 px-2 rounded-lg text-center border-blue-500 border;
 }
 
 main {
-    @apply flex flex-col items-stretch p-3;
+  @apply flex flex-col items-stretch p-3;
 }
 
 article {
-    @apply flex flex-col items-stretch gap-3;
+  @apply flex flex-col items-stretch gap-3;
 }
 
 section {
-    @apply flex flex-col items-stretch gap-3;
+  @apply flex flex-col items-stretch gap-3;
 }
 
-input, textarea {
-    @apply border border-gray-300 rounded-lg p-2 bg-slate-100 focus:bg-black focus:text-white placeholder:italic placeholder:text-slate-500 focus:placeholder-gray-50;
+input,
+textarea {
+  @apply border border-gray-300 rounded-lg p-2 bg-slate-100 focus:bg-black focus:text-white placeholder:italic placeholder:text-slate-500 focus:placeholder-gray-50;
 }
 
 textarea {
-    @apply resize-none h-24;
+  @apply resize-none h-24;
 }
 
 iframe {
-    @apply w-full h-auto border rounded-lg;
+  @apply w-full h-auto border rounded-lg;
 }
 
 pre {
-    @apply bg-gray-300 p-3 overflow-auto max-w-full rounded-lg;
+  @apply bg-gray-300 p-3 overflow-auto max-w-full rounded-lg;
 }

@@ -17,11 +17,9 @@ function App() {
   return (
     <main>
       <AppProvider>
-        {
-          ({ data }) => {
-            return data.viewerMode ? <Viewer /> : <Create />
-          }
-        }
+        {({ data }) => {
+          return data.viewerMode ? <Viewer /> : <Create />;
+        }}
       </AppProvider>
     </main>
   );
